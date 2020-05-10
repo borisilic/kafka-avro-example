@@ -1,5 +1,7 @@
 package com.codenotfound.springkafkahelloworld.consumer;
 
+import example.avro.User;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -18,9 +20,9 @@ public class Receiver {
         return latch;
     }
 
-    @KafkaListener(topics = "helloworld.t")
-    public void receive(String payload) {
-        LOGGER.info("received payload='{}'", payload);
+    @KafkaListener(topics = "${kafka.topic.avro}")
+    public void receive(ConsumerRecord<String, User> user) {
+        LOGGER.info("received payload='{}'", user.value());
         latch.countDown();
     }
 }
