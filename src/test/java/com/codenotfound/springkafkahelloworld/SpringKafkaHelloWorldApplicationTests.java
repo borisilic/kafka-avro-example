@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @DirtiesContext
-//@EmbeddedKafka(partitions = 1, topics = {SpringKafkaHelloWorldApplicationTests.HELLOWORLD_TOPIC})
+@EmbeddedKafka(partitions = 1, topics = {SpringKafkaHelloWorldApplicationTests.HELLOWORLD_TOPIC})
 public class SpringKafkaHelloWorldApplicationTests {
 
 	static final String HELLOWORLD_TOPIC = "helloworld.t";
